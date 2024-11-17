@@ -31,10 +31,10 @@ public class MainActivity2 extends AppCompatActivity {
 
     final static String _ID = "_id";
     final static String ITEM_NAME = "name";
-    final static String ITEM_PRICE = "price";
+    final static String ITEM_COST = "cost";
     final static String ITEM_STOCK = "stock";
     final static String ITEM_DESC = "description";
-    final static String[] columns = {_ID, ITEM_NAME, ITEM_PRICE, ITEM_STOCK, ITEM_DESC};
+    final static String[] columns = {_ID, ITEM_NAME, ITEM_COST, ITEM_STOCK, ITEM_DESC};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +44,15 @@ public class MainActivity2 extends AppCompatActivity {
         dbHelper = new DatabaseOpenHelper(this);
         listView = (ListView) findViewById(R.id.mylist);
 
-        scAdapter = new SimpleCursorAdapter(this, R.layout.line, null, new String[]{ITEM_NAME, ITEM_PRICE, ITEM_STOCK}, new int[]{R.id.item_name, R.id.item_price, R.id.item_stock}, 0);
+        scAdapter = new SimpleCursorAdapter(this, R.layout.line, null, new String[]{ITEM_NAME, ITEM_COST, ITEM_STOCK}, new int[]{R.id.item_name, R.id.item_cost, R.id.item_stock}, 0);
         listView.setAdapter(scAdapter);
 
         scAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
             @Override
             public boolean setViewValue(View view, Cursor cursor, int i) {
-                if (view.getId() == R.id.item_price) {
-                    double price = cursor.getDouble(i);
-                    ((TextView) view).setText("$" + String.format("%.2f", price));
+                if (view.getId() == R.id.item_cost) {
+                    double cost = cursor.getDouble(i);
+                    ((TextView) view).setText("$" + String.format("%.2f", cost));
                     return true;
                 }
 
@@ -88,7 +88,7 @@ public class MainActivity2 extends AppCompatActivity {
 
                     String name = mCursor.getString(mCursor.getColumnIndex(ITEM_NAME));
                     String desc = mCursor.getString(mCursor.getColumnIndex(ITEM_DESC));
-                    String cost = mCursor.getString(mCursor.getColumnIndex(ITEM_PRICE));
+                    String cost = mCursor.getString(mCursor.getColumnIndex(ITEM_COST));
                     String stock = mCursor.getString(mCursor.getColumnIndex(ITEM_STOCK));
 
                     intent.putExtra("name", name);

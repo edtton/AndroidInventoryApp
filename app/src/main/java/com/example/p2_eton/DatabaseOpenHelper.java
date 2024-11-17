@@ -9,14 +9,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
     final static String TABLE_NAME = "inventory";
     final static String ITEM_NAME = "name";
-    final static String PRICE = "price";
+    final static String COST = "cost";
     final static String STOCK = "stock";
     final static String DESCRIPTION = "description";
     final static String _ID = "_id";
     final private static String NAME = "inventory_db";
     final private static Integer VERSION = 1;
     final private Context context;
-    final static String[] allColumns = {_ID, ITEM_NAME, STOCK, PRICE, DESCRIPTION};
+    final static String[] allColumns = {_ID, ITEM_NAME, STOCK, COST, DESCRIPTION};
 
     public DatabaseOpenHelper(Context context) {
         super(context, NAME, null, VERSION);
@@ -29,7 +29,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         String CREATE_CMD = "CREATE TABLE " + TABLE_NAME + " (" +
                 _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 ITEM_NAME + " TEXT NOT NULL, " +
-                PRICE + " REAL NOT NULL, " +
+                COST + " REAL NOT NULL, " +
                 STOCK + " INTEGER NOT NULL, " +
                 DESCRIPTION + " TEXT)";
         db.execSQL(CREATE_CMD);
@@ -37,20 +37,20 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(ITEM_NAME, "Chocolate Delight");
-        values.put(PRICE, 2.99);
+        values.put(COST, 2.99);
         values.put(STOCK, 25);
         db.insert(TABLE_NAME, null, values);
         values.clear();
 
         values.put(ITEM_NAME, "Melty Mints");
-        values.put(PRICE, 1.99);
+        values.put(COST, 1.99);
         values.put(STOCK, 105);
         values.put(DESCRIPTION, "Mint and chocolate drops sure to please.");
         db.insert(TABLE_NAME, null, values);
         values.clear();
 
         values.put(ITEM_NAME, "Peanut Butter Treasure");
-        values.put(PRICE, 3.99);
+        values.put(COST, 3.99);
         values.put(STOCK, 5);
         db.insert(TABLE_NAME, null, values);
         values.clear();
@@ -64,12 +64,12 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     }
 
     // add item to table
-    public void insert(String name, double price, int stock, String description) {
+    public void insert(String name, double cost, int stock, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(ITEM_NAME, name);
-        values.put(PRICE, price);
+        values.put(COST, cost);
         values.put(STOCK, stock);
         values.put(DESCRIPTION, description);
 
@@ -85,12 +85,12 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     }
 
     // update item by name
-    public void update(int id, String newName, double newPrice, int newStock, String newDescription) {
+    public void update(int id, String newName, double newCost, int newStock, String newDescription) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(ITEM_NAME, newName);
-        values.put(PRICE, newPrice);
+        values.put(COST, newCost);
         values.put(STOCK, newStock);
         values.put(DESCRIPTION, newDescription);
 

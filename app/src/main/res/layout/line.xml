@@ -13,7 +13,7 @@
         android:textSize="28sp" />
 
     <TextView
-        android:id="@+id/item_price"
+        android:id="@+id/item_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cost per item:"
