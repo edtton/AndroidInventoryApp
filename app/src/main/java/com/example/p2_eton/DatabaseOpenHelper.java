@@ -95,6 +95,26 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void updateStock(String id, double newStock) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(STOCK, newStock);
+
+        db.update(TABLE_NAME, values, _ID + "=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    public void updateDesc(String id, String newDesc) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DESCRIPTION, newDesc);
+
+        db.update(TABLE_NAME, values, _ID + "=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+
     public Cursor readAll() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.query(TABLE_NAME, allColumns, null, null, null, null, null);

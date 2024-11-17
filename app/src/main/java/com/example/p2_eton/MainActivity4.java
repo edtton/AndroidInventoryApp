@@ -98,9 +98,13 @@ public class MainActivity4 extends AppCompatActivity {
                 Toast.makeText(this, "Stock cannot be less than zero!", Toast.LENGTH_SHORT).show();
                 return;
             }
+            dbHelper.updateStock(id, newStock);
         }
 
         String newDesc = descField.getText().toString();
+        if (!newDesc.isEmpty()) {
+            dbHelper.updateDesc(id, newDesc);
+        }
 
         Intent intent = new Intent(this, MainActivity2.class);
         startActivity(intent);
