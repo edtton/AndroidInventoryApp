@@ -86,11 +86,13 @@ public class MainActivity2 extends AppCompatActivity {
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(MainActivity2.this, MainActivity4.class);
 
+                    String item_id = mCursor.getString(mCursor.getColumnIndex(_ID));
                     String name = mCursor.getString(mCursor.getColumnIndex(ITEM_NAME));
                     String desc = mCursor.getString(mCursor.getColumnIndex(ITEM_DESC));
                     String cost = mCursor.getString(mCursor.getColumnIndex(ITEM_COST));
                     String stock = mCursor.getString(mCursor.getColumnIndex(ITEM_STOCK));
 
+                    intent.putExtra("id", item_id);
                     intent.putExtra("name", name);
                     intent.putExtra("desc", desc);
                     intent.putExtra("cost", cost);
@@ -103,8 +105,7 @@ public class MainActivity2 extends AppCompatActivity {
             }
         );
 
-//        elem =  (EditText)findViewById(R.id.input);
-//        dbHelper = new DatabaseOpenHelper(this);
+        dbHelper = new DatabaseOpenHelper(this);
     }
 
     public void onResume() {

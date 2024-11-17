@@ -84,15 +84,12 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // update item by name
-    public void update(int id, String newName, double newCost, int newStock, String newDescription) {
+    // update item cost using id lookup
+    public void updateCost(String id, double newCost) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(ITEM_NAME, newName);
         values.put(COST, newCost);
-        values.put(STOCK, newStock);
-        values.put(DESCRIPTION, newDescription);
 
         db.update(TABLE_NAME, values, _ID + "=?", new String[]{String.valueOf(id)});
         db.close();

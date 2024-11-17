@@ -1,6 +1,7 @@
 package com.example.p2_eton;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity4 extends AppCompatActivity {
+    private String id;
     private String name;
     private String cost;
     private String stock;
@@ -23,11 +25,17 @@ public class MainActivity4 extends AppCompatActivity {
     private Integer newStock;
     private String newDesc;
 
+    private SQLiteDatabase db = null;
+    private DatabaseOpenHelper dbHelper = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main4);
+
+        dbHelper = new DatabaseOpenHelper(this);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -52,6 +60,7 @@ public class MainActivity4 extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        id = intent.getStringExtra("id");
         name = intent.getStringExtra("name");
         cost = intent.getStringExtra("cost");
         stock = intent.getStringExtra("stock");
@@ -79,6 +88,7 @@ public class MainActivity4 extends AppCompatActivity {
                 Toast.makeText(this, "Cost cannot be less than zero dollars!", Toast.LENGTH_SHORT).show();
                 return;
             }
+            dbHelper.updateCost(id, newCost);
         }
 
         String newStockStr = stockField.getText().toString();
