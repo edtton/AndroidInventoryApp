@@ -5,15 +5,70 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity3">
+
+    <Spinner
+        android:id="@+id/itemSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp" />
+
+    <EditText
+        android:id="@+id/stockField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:inputType="number"
+        android:textSize="20dp"
+        android:maxLength="5"
+        android:hint="How many?"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:onClick="clickAdd"
+        android:text="Add to Order"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:onClick="clickRemove"
+        android:text="Remove from Order"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:onClick="clickFinish"
+        android:text="Finish Order"/>
 
     <TextView
         android:layout_height="wrap_content"
-        android:text="HANDLE ORDERS"
+        android:text="Current Order:"
         android:layout_width="match_parent"
         android:gravity="center"
-        android:textSize="32sp"
+        android:textSize="20sp"
+        android:layout_margin="20dp"
+        />
+
+    <ListView
+        android:id="@+id/mylist"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"/>
+
+    <TextView
+        android:id="@+id/totalField"
+        android:layout_height="wrap_content"
+        android:text="Current Total: $"
+        android:layout_width="match_parent"
+        android:gravity="left"
+        android:textSize="20sp"
         android:layout_margin="20dp"
         />
 
 </LinearLayout>
+

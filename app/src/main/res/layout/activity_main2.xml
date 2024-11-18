@@ -32,7 +32,14 @@
         android:onClick="clickAdd"
         android:layout_height="wrap_content"
         android:id="@+id/buttonAdd"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="Back to Home Screen"
+        android:onClick="clickBack"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_margin="20dp"/>
+        android:layout_margin="5dp"/>
 
 </LinearLayout>
