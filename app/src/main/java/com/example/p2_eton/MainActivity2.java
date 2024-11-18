@@ -1,5 +1,6 @@
 package com.example.p2_eton;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -113,5 +115,10 @@ public class MainActivity2 extends AppCompatActivity {
         db = dbHelper.getWritableDatabase();
         mCursor = dbHelper.readAll();
         scAdapter.swapCursor(mCursor);
+    }
+
+    public void clickAdd(View v) {
+        Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+        startActivity(intent);
     }
 }

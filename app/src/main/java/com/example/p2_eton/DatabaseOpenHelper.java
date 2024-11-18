@@ -77,13 +77,6 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // delete item by name
-    public void delete(String itemName) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, ITEM_NAME + "=?", new String[]{itemName});
-        db.close();
-    }
-
     // update item cost using id lookup
     public void updateCost(String id, double newCost) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -112,6 +105,12 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         values.put(DESCRIPTION, newDesc);
 
         db.update(TABLE_NAME, values, _ID + "=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    public void delete(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int status = db.delete(TABLE_NAME, _ID + "=?", new String[] { id });
         db.close();
     }
 

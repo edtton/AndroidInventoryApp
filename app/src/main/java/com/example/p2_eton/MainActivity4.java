@@ -1,5 +1,6 @@
 package com.example.p2_eton;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -25,7 +26,6 @@ public class MainActivity4 extends AppCompatActivity {
     private Integer newStock;
     private String newDesc;
 
-    private SQLiteDatabase db = null;
     private DatabaseOpenHelper dbHelper = null;
 
     @Override
@@ -109,4 +109,20 @@ public class MainActivity4 extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity2.class);
         startActivity(intent);
     }
+
+    public void clickDelete(View v) {
+        new AlertDialog.Builder(this)
+                .setTitle("Delete Item")
+                .setMessage("Are you sure you want to delete " + name + "?")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    dbHelper.delete(id);
+                    Toast.makeText(this, name + " deleted.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(this, MainActivity2.class);
+                    startActivity(intent);
+                })
+                .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                .show();
+    }
+
+
 }

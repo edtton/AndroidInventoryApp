@@ -6,17 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity4">
-
-    <TextView
-        android:id="@+id/nameField"
-        android:layout_height="wrap_content"
-        android:text="nameField"
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:textSize="32sp"
-        android:layout_margin="20dp"
-        />
+    tools:context=".MainActivity5">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,17 +18,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description: "
+            android:text="Item Name: "
             android:textSize="20dp"/>
 
         <EditText
-            android:id="@+id/descField"
+            android:id="@+id/nameField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textCapSentences|textAutoCorrect"
             android:textSize="20dp"
-            android:hint="descField"/>
-
+            android:hint="item name"/>
     </LinearLayout>
 
     <LinearLayout
@@ -61,8 +50,7 @@
             android:inputType="numberDecimal"
             android:textSize="20dp"
             android:maxLength="5"
-            android:hint="costField"/>
-
+            android:hint="cost per item"/>
     </LinearLayout>
 
     <LinearLayout
@@ -85,24 +73,37 @@
             android:inputType="number"
             android:textSize="20dp"
             android:maxLength="5"
-            android:hint="stockField"/>
+            android:hint="number in stock"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description: "
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/descField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textAutoCorrect"
+            android:textSize="20dp"
+            android:hint="item description"/>
     </LinearLayout>
 
     <Button
-        android:id="@+id/buttonUpdate"
+        android:id="@+id/buttonAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:onClick="clickUpdate"
-        android:text="Update"/>
-
-    <Button
-        android:id="@+id/buttonDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:onClick="clickDelete"
-        android:text="Delete Item"/>
+        android:layout_margin="20dp"
+        android:onClick="clickAdd"
+        android:text="Add Item"/>
 
 </LinearLayout>
